@@ -1,0 +1,79 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 2</title>
+
+    <script
+    crossorigin 
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+
+    <script 
+    src="https://unpkg.com/babel-standalone@6/babel.min.js" 
+    ></script>
+
+    <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js" 
+    ></script>
+
+</head>
+<body>
+    <div id="root"></div>
+    <!-- Задача 3. Задано початок та кінець діапазону. 
+     При натисканні на кнопку випадковим чином генерувати значення 
+     з вказаного діапазону та відображати його. -->
+
+     <script type="text/babel">
+
+        function getRandomInRange(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function Homework3() {
+            const [min, setMin] = React.useState(0);
+            const [max, setMax] = React.useState(100);
+            const [randomValue, setRandomValue] = React.useState(null);
+
+            const handleGenerate = () => {
+                const value = getRandomInRange(min, max);
+                setRandomValue(value);
+            };
+
+            return (
+                <div>
+                    <h1>Homework 3</h1>
+                    <label>
+                        Min:
+                        <input 
+                            type="number" 
+                            value={min} 
+                            onChange={(e) => setMin(Number(e.target.value))} 
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        Max:
+                        <input 
+                            type="number" 
+                            value={max} 
+                            onChange={(e) => setMax(Number(e.target.value))} 
+                        />
+                    </label>
+                    <br />
+                    <button onClick={handleGenerate}>Generate Random Value</button>
+                    {randomValue !== null && (
+                        <div>
+                            <h2>Random Value: {randomValue}</h2>
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        ReactDOM.render(<Homework3 />, document.getElementById('root'));
+    </script>
+</body>
+</html>

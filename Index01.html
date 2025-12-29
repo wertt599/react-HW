@@ -1,0 +1,66 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 1</title>
+    <script 
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" 
+    crossorigin
+    ></script>
+    <script 
+    src="https://unpkg.com/babel-standalone@6/babel.min.js" 
+    crossorigin
+    ></script>
+    <script 
+    src="https://unpkg.com/react@18/umd/react.development.js" 
+    crossorigin
+    ></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- Задача 1. Вводиться кількість пасажирів. Вивести:
+              скільки потрібно автобусів (кожен автобус на 20 місць)
+              скільки пляшок води (кожному пасажиру 2 пляшки)
+              скільки бутербродів (кожному пасажиру 3 бутерброди) -->
+
+
+              <script type="text/babel">
+                const BUS = 20;
+                const BOTTLE_OF_WATER = 2;
+                const SANDWICHES = 3; 
+              
+                function Homework1() {
+                  const [passengers, setPassengers] = React.useState(0);
+              
+                  const handleChange = (event) => {
+                    setPassengers(Number(event.target.value));
+                  };
+              
+                  const calculateBuses = () => Math.ceil(passengers / BUS);
+                  const calculateBottles = () => passengers * BOTTLE_OF_WATER;
+                  const calculateSandwiches = () => passengers * SANDWICHES;
+              
+                  return (
+                    <div>
+                      <h1>Homework 1</h1>
+                      <label>
+                        Enter number of passengers:
+                        <input type="number" value={passengers} onChange={handleChange} />
+                      </label>
+                      <div>
+                        <p>Number of buses needed: {calculateBuses()}</p>
+                        <p>Number of bottles of water needed: {calculateBottles()}</p>
+                        <p>Number of sandwiches needed: {calculateSandwiches()}</p>
+                      </div>
+                    </div>
+                  );
+                }
+              
+                
+                const root = ReactDOM.createRoot(document.getElementById('root'));
+                root.render(<Homework1 />);
+              </script>
+</body>
+</html>
