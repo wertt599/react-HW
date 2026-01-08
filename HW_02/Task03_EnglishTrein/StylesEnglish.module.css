@@ -1,0 +1,20 @@
+/* Styles for the EnglishTrein component */
+
+.correct {
+  border: 2px solid green;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.incorrect {
+  border: 2px solid red;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
